@@ -10,11 +10,12 @@ using Newtonsoft.Json;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
+using PW.DomainEvent;
 
 namespace PW.NhibernateRepository
 {
     [TestFixture]
-    public class TestDB
+    public class DBHelper
     {
         [Test]
         public void CreateDB()
@@ -34,7 +35,7 @@ namespace PW.NhibernateRepository
                         AccountId = accountId,Username = "aa",Password = "bb"
                     };
                     evt.Value = JsonConvert.SerializeObject(createAccountEvent);
-                    evt.EventType = "CreateAccountEvent";
+                    evt.EventType = typeof(CreateAccountEvent).ToClassFullName();
                     evt.PublishDate=DateTime.Now;
                     session.SaveOrUpdate(evt);
                     transaction.Commit();
@@ -58,10 +59,10 @@ namespace PW.NhibernateRepository
                     var createAccountEvent = new UpdateAccountPasswordEvnet()
                     {
                         AccountId = accountId,
-                        NewPassword = "cc"
+                        Password = "cc"
                     };
                     evt.Value = JsonConvert.SerializeObject(createAccountEvent);
-                    evt.EventType = "UpdateAccountPasswordEvnet";
+                    evt.EventType = typeof(UpdateAccountPasswordEvnet).ToClassFullName();
                     evt.PublishDate = DateTime.Now;
                     session.SaveOrUpdate(evt);
                     transaction.Commit();
@@ -85,10 +86,10 @@ namespace PW.NhibernateRepository
                     var createAccountEvent = new UpdateAccountUsernameEvent()
                     {
                         AccountId = accountId,
-                        NewUsername = "dd"
+                        Username = "dd"
                     };
                     evt.Value = JsonConvert.SerializeObject(createAccountEvent);
-                    evt.EventType = "UpdateAccountUsernameEvent";
+                    evt.EventType = typeof(UpdateAccountUsernameEvent).ToClassFullName();
                     evt.PublishDate = DateTime.Now;
                     session.SaveOrUpdate(evt);
                     transaction.Commit();
@@ -96,13 +97,32 @@ namespace PW.NhibernateRepository
             }
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        [Test]
+        public void TestGetAccount()
+        {
+            var accountId = new Guid("9425cb8e-d836-483c-8749-f882a6b00011");
+            var rep=new AccountRepository();
+            var account=rep.Get(accountId);
+            var a = 1;
+        }
+
+        
+
+        public static ISessionFactory CreateSessionFactory()
         {
             return Fluently.Configure()
                   .Database(MsSqlConfiguration.MsSql2012.ConnectionString(c=>c.FromConnectionStringWithKey("PW")))
                   .Mappings(m => m.FluentMappings.AddFromAssemblyOf<AccountEventMap>())
 //                  .ExposeConfiguration(cfg => new SchemaExport(cfg).Execute(true, true, false))
                   .BuildSessionFactory();
+        }
+    }
+
+    public static class A
+    {
+        public static string ToClassFullName(this Type type)
+        {
+            return type.AssemblyQualifiedName.Substring(0, type.AssemblyQualifiedName.IndexOf(", Version"));
         }
     }
 }
