@@ -23,13 +23,13 @@ namespace PW.NhibernateRepository
                 list.ForEach(x =>
                 {
                     var type = Type.GetType(x.EventType);
-                    var evt = JsonConvert.DeserializeObject<dynamic>(x.Value);
+                    var evt = JsonConvert.DeserializeObject<dynamic>(x.Event);
                     
-                    if (typeof(IUpdateUsernamePropertyEvent).IsAssignableFrom(type))
+                    if (typeof(IPropertyUsernameUpdatedEvent).IsAssignableFrom(type))
                     {
                         account.Username = evt.Username;
                     }
-                    if (typeof(IUpdatePasswordPropertyEvent).IsAssignableFrom(type))
+                    if (typeof(IPropertyPasswordUpdatedEvent).IsAssignableFrom(type))
                     {
                         account.Password = evt.Password;
                     }

@@ -12,7 +12,7 @@ namespace PW.NhibernateRepository
 
         public virtual Guid AccountId { get; set; }
 
-        public virtual string Value { get; set; }
+        public virtual string Event { get; set; }
 
         public virtual string EventType { get; set; }
 
