@@ -164,7 +164,7 @@
     <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PW.CommandService\PW.Command.csproj">
+    <ProjectReference Include="..\PW.Command\PW.Command.csproj">
       <Project>{9C850243-FC66-4C1B-9878-DA59E0831A08}</Project>
       <Name>PW.Command</Name>
     </ProjectReference>

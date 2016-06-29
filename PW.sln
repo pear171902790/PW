@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.Web", "PW.Web\PW.Web.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.Web.Tests", "PW.Web.Tests\PW.Web.Tests.csproj", "{91B48562-5295-4044-B898-32D33424F17F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.Command", "PW.CommandService\PW.Command.csproj", "{9C850243-FC66-4C1B-9878-DA59E0831A08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PW.Command", "PW.Command\PW.Command.csproj", "{9C850243-FC66-4C1B-9878-DA59E0831A08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
