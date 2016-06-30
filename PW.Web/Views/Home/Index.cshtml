@@ -2,6 +2,56 @@
 
 @{
     ViewBag.Title = "李晨的个人网站";
-    Layout = null;
+    Layout = "~/Views/_Layout.cshtml";
+    ViewBag.aColor = "white";
 }
 
+<style>
+    body {
+        background-image: url('../../Content/213.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: top left;
+    }
+    #main {
+        width: 800px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -400px;
+        margin-top: -150px;
+        background-color: rgba(85,123,205,0.3);
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        color: white;
+    }
+    #main_top {
+        margin: 20px 40px;
+        font-size: 40px;
+        font-weight: bolder;
+        text-align: center;
+        border-bottom: 1px solid white;
+    }
+    #main_middle {
+        margin: 40px;
+        font-size: 20px;
+        font-weight: bolder;
+        padding-left: 15px;
+        background-color:  rgba(45,83,165,0.3);
+        border-radius: 25px;
+    }
+    #main_bottom {
+        margin: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: right;
+        border-top: 1px solid white;
+        padding-top: 15px;
+    }
+</style>
+<div id="main">
+    <div id="main_top">李晨的个人网站<br>Peter Lee's Personal Website</div>
+    <div id="main_middle">>>&nbsp;&nbsp;&nbsp;&nbsp;博客 / 相册 / <a href="http://www.github.com/pear171902790" target="_blank">GitHub</a></div>
+    <div id="main_bottom">www.itlichen.com</div>
+</div>
