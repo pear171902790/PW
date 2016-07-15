@@ -13,5 +13,10 @@ namespace PW.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Link()
+        {
+            return View();
+        }
     }
 }

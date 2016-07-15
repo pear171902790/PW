@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using PW.NhibernateRepository;
 
 namespace PW.Web
 {
@@ -14,8 +13,8 @@ namespace PW.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            DBHelper.CreateTables();
-            DBHelper.Seed();
+//            DBHelper.CreateTables();
+//            DBHelper.Seed();
         }
     }
 }
